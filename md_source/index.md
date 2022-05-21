@@ -1,3 +1,5 @@
 # Hello
 
-[Documentation for ChromProcess](https://will-robin.github.io/ChromProcess/html/index.html)
+Coming soon...
+
+[Click here for the documentation for ChromProcess](https://github.com/Will-Robin/ChromProcess)
