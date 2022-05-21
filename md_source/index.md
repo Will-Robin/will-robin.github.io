@@ -2,4 +2,4 @@
 
 Coming soon...
 
-[Click here for the documentation for ChromProcess](https://github.com/Will-Robin/ChromProcess)
+[Click here for the documentation for ChromProcess](https://will-robin.github.io/ChromProcess/html/index.html)
