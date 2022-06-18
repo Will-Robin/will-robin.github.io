@@ -30,17 +30,27 @@
 html {
   width: 100%;
   height: 100%;
+  background-color: var(--r-background-color);
 }
 
 body {
-  background-color: var(--r-background-color);
-  min-width: 100%;
-  min-height: 100%;
+  margin: 0 auto;
+  height: 100%;
+  width: 100%;
+  text-align: justify;
 }
 
 title {
+  margin: 0 auto;
   color: var(--r-heading-color);
   size: var(--r-heading1-size);
+}
+
+header {
+  background-image: url("images/Background_1.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
 }
 
 h1 {
