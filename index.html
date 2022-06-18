@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>Hello</title>
+  <title>~</title>
   <style>
     html {
       line-height: 1.5;
@@ -220,10 +220,14 @@
   <style> /* Style tag here so this CSS can be integrated into the HTML header */
   :root {
     --r-background-color: #F0F1EB;
+
     --r-main-font: Georgia, Palatino Linotype, Book Antiqua, Palatino, FreeSerif, serif;
+
     --r-main-font-size: 12px;
+
     --r-main-color: #000000;
     --r-block-margin: 20px;
+
     --r-heading-margin: 0 0 50px 0;
     --r-heading-font: Palatino Linotype, Book Antiqua, Palatino, FreeSerif, serif;
     --r-heading-color: rgb(48, 65, 47);
@@ -237,9 +241,11 @@
     --r-heading2-size: 6em;
     --r-heading3-size: 4em;
     --r-heading4-size: 2em;
+
     --r-base-font-size: 2em;
     --r-code-font: monospace;
-    --r-link-color: #51483D;
+
+    --r-link-color: #fff;
     --r-link-color-dark: #25211c;
     --r-link-color-hover: #93734b;
     --r-selection-background-color: #304a1f;
@@ -257,6 +263,7 @@
     height: 100%;
     width: 100%;
     text-align: justify;
+    font-family: var(--r-main-font);
   }
 
   title {
@@ -270,16 +277,21 @@
     background-size: cover;
     background-repeat: no-repeat;
     width: 100%;
+    height: 10vh;
+  }
+
+  code {
+  	font-family: var(--r-code-font);
   }
 
   h1 {
     color: var(--r-heading-color);
+    font-family: var(--r-heading-font);
   }
 
-  a:link {
-    color: var(--r-link-color);
-    background-color: transparent;
-    text-decoration: none;
+  h2 {
+    color: var(--r-heading-color);
+    font-family: var(--r-heading-font);
   }
 
   a:visited {
@@ -294,6 +306,12 @@
     text-decoration: underline;
   }
 
+  a:link {
+    color: var(--r-link-color);
+    text-decoration: none;
+    font-weight: bold;
+  }
+
   </style>
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
@@ -301,7 +319,7 @@
 </head>
 <body>
 <header id="title-block-header">
-<h1 class="title">Hello</h1>
+<h1 class="title">~</h1>
 </header>
 <p>GitHub is the current home of software I’ve developed to help me do
 my job as a systems chemist. I’m interested in how software can be used
