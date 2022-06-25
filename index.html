@@ -245,7 +245,7 @@
     --r-base-font-size: 2em;
     --r-code-font: monospace;
 
-    --r-link-color: #fff;
+    --r-link-color: #fff000;
     --r-link-color-dark: #25211c;
     --r-link-color-hover: #93734b;
     --r-selection-background-color: #304a1f;
@@ -277,11 +277,11 @@
     background-size: cover;
     background-repeat: no-repeat;
     width: 100%;
-    height: 10vh;
+    height: 20vh;
   }
 
   code {
-  	font-family: var(--r-code-font);
+    font-family: var(--r-code-font);
   }
 
   h1 {
@@ -294,6 +294,12 @@
     font-family: var(--r-heading-font);
   }
 
+  a:link {
+    color: var(--r-link-color);
+    text-decoration: none;
+    font-weight: bold;
+  }
+
   a:visited {
     color: var(--r-link-color-dark);
     background-color: transparent;
@@ -304,12 +310,6 @@
     color: var(--r-link-color-hover);
     background-color: transparent;
     text-decoration: underline;
-  }
-
-  a:link {
-    color: var(--r-link-color);
-    text-decoration: none;
-    font-weight: bold;
   }
 
   </style>
