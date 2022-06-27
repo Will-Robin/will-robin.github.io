@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   width="40cm"
-   height="5cm"
-   viewBox="0 0 400 49.999997"
+   width="150mm"
+   height="50mm"
+   viewBox="0 0 150 49.999997"
    version="1.1"
    id="svg8"
    sodipodi:docname="Background_1.svg"
@@ -4599,9 +4599,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.67533818"
-     inkscape:cx="890.66489"
-     inkscape:cy="196.93837"
+     inkscape:zoom="0.42488522"
+     inkscape:cx="755.49815"
+     inkscape:cy="192.9933"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
@@ -8030,7 +8030,7 @@
        id="layer6-3"
        inkscape:label="PanelB"
        style="display:inline;opacity:0.99;stroke-width:1.54724"
-       transform="matrix(0.5697794,-0.17526517,0.15296349,0.68607126,325.24706,26.459076)">
+       transform="matrix(0.5697794,-0.17526517,0.15296349,0.68607126,70.18875,26.459076)">
       <g
          inkscape:groupmode="layer"
          id="layer8"
@@ -31644,7 +31644,7 @@
     <rect
        style="opacity:0.855306;mix-blend-mode:normal;fill:#f0f1eb;fill-opacity:0.968254;fill-rule:evenodd;stroke:none;stroke-width:0.499999;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers"
        id="rect41098"
-       width="400"
+       width="150"
        height="50"
        x="-2.6953933"
        y="6.5015907" />
