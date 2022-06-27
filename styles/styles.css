@@ -49,6 +49,8 @@ body {
 
 title {
   margin: 0 auto;
+  padding: 70px 0;
+  text-align: center;
   color: var(--r-heading-color);
   size: var(--r-heading1-size);
 }
@@ -58,7 +60,12 @@ header {
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
-  height: 20vh;
+  height: 10%;
+  padding: 60px 0;
+  text-align: center;
+  border-style: transparent;
+  border-width: 1px;
+  border-radius: 15px;
 }
 
 code {
