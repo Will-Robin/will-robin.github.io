@@ -1,5 +1,5 @@
 ---
-title: \~
+title: will-robin.github.io
 ...
 
 GitHub is the current home of software I've developed to help me do my job as a systems chemist. I'm interested in how software can be used to encode chemical knowledge and process chemical data in a clear, reproducible and open manner.
