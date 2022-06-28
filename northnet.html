@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>NorthNet</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <style> /* Style tag here so this CSS can be integrated into the HTML header */
+  :root {
+    --r-background-color: #F0F1EB;
+
+    --r-main-font: Georgia, Palatino Linotype, Book Antiqua, Palatino, FreeSerif, serif;
+
+    --r-main-font-size: 12px;
+
+    --r-main-color: #000000;
+    --r-block-margin: 20px;
+
+    --r-heading-margin: 0 0 50px 0;
+    --r-heading-font: Palatino Linotype, Book Antiqua, Palatino, FreeSerif, serif;
+    --r-heading-color: rgb(48, 65, 47);
+    --r-heading-line-height: 1.2;
+    --r-heading-letter-spacing: normal;
+    --r-heading-text-transform: none;
+    --r-heading-text-shadow: none;
+    --r-heading-font-weight: normal;
+    --r-heading1-text-shadow: none;
+    --r-heading1-size: 8em;
+    --r-heading2-size: 6em;
+    --r-heading3-size: 4em;
+    --r-heading4-size: 2em;
+
+    --r-base-font-size: 2em;
+    --r-code-font: monospace;
+
+    --r-link-color: #fff000;
+    --r-link-color-dark: #25211c;
+    --r-link-color-hover: #93734b;
+    --r-selection-background-color: #304a1f;
+    --r-selection-color: #fff;
+  }
+
+  html {
+    width: 100%;
+    height: 100%;
+    background-color: var(--r-background-color);
+  }
+
+  body {
+    margin: 0 auto;
+    height: 100%;
+    width: 100%;
+    text-align: justify;
+    font-family: var(--r-main-font);
+  }
+
+  title {
+    margin: 0 auto;
+    padding: 70px 0;
+    text-align: center;
+    color: var(--r-heading-color);
+    size: var(--r-heading1-size);
+  }
+
+  header {
+    background-image: url("images/Background_1.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 10%;
+    padding: 60px 0;
+    text-align: center;
+    border-style: transparent;
+    border-width: 1px;
+    border-radius: 15px;
+  }
+
+  code {
+    font-family: var(--r-code-font);
+  }
+
+  h1 {
+    color: var(--r-heading-color);
+    font-family: var(--r-heading-font);
+  }
+
+  h2 {
+    color: var(--r-heading-color);
+    font-family: var(--r-heading-font);
+  }
+
+  a:link {
+    color: var(--r-link-color);
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  a:visited {
+    color: var(--r-link-color-dark);
+    background-color: transparent;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: var(--r-link-color-hover);
+    background-color: transparent;
+    text-decoration: underline;
+  }
+
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">NorthNet</h1>
+</header>
+<h1 id="introduction">Introduction</h1>
+<p>This page details gives some background information for <a
+href="https://github.com/Will-Robin/NorthNet">NorthNet</a>.</p>
+<p>If you have ever had to write down a large number of chemical
+reactions by hand, you may appreciate what a mechanical process the task
+is. Organic chemistry can be quite repetitive, in particular. A good
+example of such mechanical repetitiveness is the formose reaction. Start
+with a sugar, form its enol, aldol addition/protonate, repeat. You can
+build quite a large network of chemical reactions following these steps.
+However, you may realise at a later point that you’d like to introduce a
+new type of reaction. If you’re modifying a scheme on paper, or even in
+a graphical user interface on a computer, adding in the new reactions
+can be ever harder that starting from scratch. It is necessary to find
+the right compounds for the reactions, find space on the page in which
+to add the new reactions, and what if two compounds for either side of
+the scheme have to react together? It is certainly possible to write a
+complex reaction network on paper, but at the costs of time and
+legibility. That’s ignoring the possibility of errors.</p>
+<p>The above situation is what we faced in work <a
+href="https://www.nature.com/articles/s41557-022-00956-7">combining
+high-throughput reaction data, chemical reaction networks and prebiotic
+chemistry</a> (<a href="https://rdcu.be/cO4qW">public read access
+here</a>). There was a lot to keep track of for this paper, including a
+potentially large number of reaction pathways available within the
+formose reaction space. The code which became NorthNet allowed us to
+manage this complex part of the project, as well as giving us an ‘in
+silico’ model of the formose reaction.</p>
+<p>I’m intending to use NorthNet (or similar software) in future work.
+It is open source since I believe that’s the right thing to do (without
+going into details). It is a good thing to make code available, but
+that’s not enough. For others to benefit, code also needs to be
+documented, explained and demonstrated. Not to mention tested,
+maintained and distributed. A lot of work.</p>
+<p>The API documentation for NorthNet is available <a
+href="https://will-robin.github.io/NorthNet/NorthNet.html">here</a>.
+This is where you can go to get an outline of the NorthNet code. The
+code itself ideally should show the reader how it works. The <a
+href="https://github.com/Will-Robin/NorthNet/tree/main/scripts">scripts</a>
+folder in the repository gives some examples of how to use the code.</p>
+<p>Here, some general informal explanation is provided.</p>
+<h1 id="managing-interconnected-chemical-reaction-information">Managing
+Interconnected Chemical Reaction Information</h1>
+<p>If you take a look in <code>NorthNet.Classes</code>, you’ll see
+several files containing code referring to chemical concepts. For
+example, there is the <code>Reaction</code> class which represents
+reactions and the <code>Compound</code> class, which represents
+compounds (reactants and products). This code uses the excellent package
+<a href="https://www.rdkit.org">The RDKit</a> for the chemoinformatics
+heavy lifting behind the scenes. We’ll get to the others later, but the
+third relevant class here is <code>Network</code>. This class links
+together compounds and reactions into a chemical reaction network data
+structure.</p>
+<p>The mental model behind the <code>Network</code> class is that
+compounds are connected to each other by reactions. For example, a
+reaction connects <code>A</code> to <code>B</code> in the reaction
+<code>A → B</code>, which as a result can be stated as
+<code>A → reaction → B</code>. Note the arrows which show how
+<code>A</code> is a reactant and <code>B</code> is a product. Apply this
+logic to lots of other reactions which connect to this one via
+reactants/products, and you have a model for the structure of a reaction
+network structure and its components.</p>
+<p>The connections between compounds and reactions are realised using
+Python’s dictionary (<code>dict()</code>) data structure. If you’re not
+sure what a dictionary is, the basic idea is that one uses a key to
+access values stored in the dictionary. In the <code>Network</code>
+class,unique <code>Reaction</code> objects are stored in a dictionary
+and are accessible using a key corresponding to the reaction SMILES
+derived from the reaction. <code>Compound</code> objects are stored in a
+similar way. Connections between reactions and compounds are made by
+sharing keys between them. Each <code>Reaction</code> object has
+<code>Reactants</code> and <code>Products</code> attributes, which are
+lists of SMILES keys to compounds. Each compound has <code>In</code> and
+<code>Out</code> attributes, which store reaction SMILES keys, keying to
+reactions. Therefore, given any compound, one can immediately find all
+the reactions in which it is a reactant (by examining the
+<code>Out</code> attribute) or product (<code>In</code>), and the other
+way around for a reaction (given in <code>Reactants</code> and
+<code>Products</code> attributes). For this to work, it is important
+that each reaction and compound has a unique identifier. NorthNet uses
+canonicalised SMILES strings to achieve this standardisation.</p>
+<p>This ‘bipartite’ network structure has two kinds of nodes:
+<code>NetworkReactions</code> and <code>NetworkCompounds</code>.
+Compounds can only connect to reactions, and reactions can only connect
+to compounds.</p>
+<h1 id="manipulating-network-structure">Manipulating Network
+Structure</h1>
+<p>The <code>Network</code> class has methods for adding and removing
+reactions
+(<code>network.add_reactions([Reaction, ...])</code>/<code>network/remove_reactions([Reaction, ...])</code>)
+and compounds
+(<code>network.add_compounds([Compoud, ...])</code>/<code>network.remove_compounds([Compound, ...])</code>).
+These methods make it easy to add or remove network components without
+having to manually clean up the underlying dictionaries to remove any
+‘loose end’ reactions without reactants or products, for example.
+Methods for removing single compounds or reactions are also available
+(e.g. <code>network.remove_compound(Compound)</code>).</p>
+<h1 id="network-generation">Network Generation</h1>
+<p>NorthNet contains a network generation module, which allows for
+rule-based chemical reaction generation within the organisation of the
+<code>Network</code> class. Again, the core of this operation is code
+from The RDKit, but NorthNet marshals the reaction generation operations
+to perform them and store their results in a well defined manner.</p>
+<p>Network generation uses the <code>ReactionTemplate</code> and
+<code>Substructure</code> classes (in addition to <code>Compound</code>,
+<code>Reaction</code> and <code>Network</code>).
+<code>ReactionTemplate</code> wraps up <a
+href="https://www.rdkit.org/docs/RDKit_Book.html#chemical-reaction-handling">reaction
+SMARTS</a>, whilst <code>Substructure</code> wraps up <a
+href="https://www.daylight.com/dayhtml/doc/theory/theory.smarts.html">SMARTS</a>.</p>
+<p>Designing (reaction) SMARTS patterns is beyond the scope of this
+document. Examples can be found in the <a
+href="https://github.com/Will-Robin/NorthNet/tree/main/scripts">scripts</a>
+directory of the repo.</p>
+<p>A network generation operation consists of finding compounds in the
+network which have substructure matches with the substructures defined
+in the <code>ReactiveSubstructures</code> attribute of a
+<code>ReactionTemplate</code> object. Reaction transformations are then
+performed on the selected compounds, and new reactions and compounds are
+added to the network. This process can be repeated with the same
+reaction type or other reaction types to build large network
+structures.</p>
+<h1 id="pathway-searching">Pathway searching</h1>
+<p>Originally, I intended on implementing pathway search algorithms with
+use the <code>Network</code> data structure. I did some work to that
+end, but realised that it would be more sensible to use <a
+href="https://networkx.org">NetworkX</a> for pathway searching. This
+interface is enabled using the <code>network.to_networkx()</code> method
+to create a NetworkX DiGraph object with the same structure as the
+NorthNet <code>Network</code>. Why not just start from NetworkX in the
+first place? NorthNet provides a chemically meaningful interface to
+network creation and manipulation. Similar operations could be performed
+with a NetworkX DiGraph, but at the expense of clarity over the
+insertion and removal of chemical information.</p>
+<h1 id="conclusion">Conclusion</h1>
+<p>That’s the end, for now. I use NorthNet as a tool for keeping track
+of large sets of reactions, as a reference, and as a kind of ‘database’
+as part of investigations. I hope it is useful for you!</p>
+<hr />
+</body>
+</html>
