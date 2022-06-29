@@ -10,19 +10,11 @@ Below are descriptions of some of the key repositories.
 
 ## NorthNet
 
-[NorthNet](https://github.com/Will-Robin/NorthNet) is a Python package for handling information on chemical reaction networks (CRNs). NorthNet is designed to solve the problem of interacting with the architecture of CRNs, which can be as simple as building and editing CRNs at the level of reactions and compounds represented in a computer model. At its core is the `Network` CRN model structure which can be interacted with using code which is chemically meaningful. For example, methods such as:
-
-```python
-network.add_compound(compound)
-network.remove_compound(compound)
-network.add_reaction(reaction)
-network.remove_reaction(reaction)
-```
-should do exactly as they say, and not leave any 'dangling' pieces of information, such as reactions with no associated compounds, when they are performed. There is also a network generation module powered by [The RDKit](https://www.rdkit.org). Provided with a set of initiator compounds and a set of SMARTS-encoded reaction rules, NorthNet can iteratively generate the reactions and associated compounds of a CRN.
+You can find a discussion of NorthNet [here](northnet.html).
 
 ## ChromProcess
 
-[ChromProcess](https://github.com/Will-Robin/ChromProcess) is a Python package for handling chromatography data. It is designed to aid in automation for processing of sets of chromatograms, containing basic functionality for peak picking and integration. Some text-based file types and `.cdf` files can be read by ChromProcess. Given data and some analysis details, ChromProcess can create peak tables and data reports reporting on how chromatographic peaks change across a series of chromatograms. [The API documentation for ChromProcess is found here.](https://will-robin.github.io/ChromProcess/index.html)
+[ChromProcess](https://github.com/Will-Robin/ChromProcess) is  Python package for handling chromatography data. It is designed to aid in automation for processing of sets of chromatograms, containing basic functionality for peak picking and integration. Some text-based file types and `.cdf` files can be read by ChromProcess. Given data and some analysis details, ChromProcess can create peak tables and data reports reporting on how chromatographic peaks change across a series of chromatograms. [The API documentation for ChromProcess is found here.](https://will-robin.github.io/ChromProcess/index.html)
 
 ## Chromefish
 
