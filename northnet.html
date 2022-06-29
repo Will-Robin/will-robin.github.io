@@ -266,23 +266,29 @@
 <h1 class="title">NorthNet</h1>
 </header>
 <h1 id="introduction">Introduction</h1>
-<p>This page details gives some background information for <a
-href="https://github.com/Will-Robin/NorthNet">NorthNet</a>.</p>
-<p>If you have ever had to write down a large number of chemical
-reactions by hand, you may appreciate what a mechanical process the task
-is. Organic chemistry can be quite repetitive, in particular. A good
-example of such mechanical repetitiveness is the formose reaction. Start
-with a sugar, form its enol, aldol addition/protonate, repeat. You can
-build quite a large network of chemical reactions following these steps.
-However, you may realise at a later point that you’d like to introduce a
-new type of reaction. If you’re modifying a scheme on paper, or even in
-a graphical user interface on a computer, adding in the new reactions
-can be ever harder that starting from scratch. It is necessary to find
-the right compounds for the reactions, find space on the page in which
-to add the new reactions, and what if two compounds for either side of
-the scheme have to react together? It is certainly possible to write a
-complex reaction network on paper, but at the costs of time and
-legibility. That’s ignoring the possibility of errors.</p>
+<p><a href="https://github.com/Will-Robin/NorthNet">NorthNet</a> is a
+Python package for handling information on chemical reaction networks
+(CRNs). It is designed to solve the problem of interacting with the
+architecture of CRNs, which can be as simple as building and editing
+CRNs at the level of reactions and compounds represented in a computer
+model. At its core is the <code>Network</code> CRN model structure which
+can be interacted with using code which is chemically meaningful. For
+example, methods such as:</p>
+<p>If you have ever written down a large number of chemical reactions by
+hand, you may appreciate what a mechanical process the task is. Organic
+chemistry can be quite repetitive, in particular. A good example of such
+mechanical repetitiveness is the formose reaction. Start with a sugar,
+form its enol, aldol addition/protonate, repeat. You can build quite a
+large network of chemical reactions following these steps. However, you
+may realise at a later point that you’d like to introduce a new type of
+reaction. If you’re modifying a scheme on paper, or even in a graphical
+user interface on a computer, adding in the new reactions can be ever
+harder that starting from scratch. It is necessary to find the right
+compounds for the reactions, find space on the page in which to add the
+new reactions, and what if two compounds for either side of the scheme
+have to react together? It is certainly possible to write a complex
+reaction network on paper, but at the costs of time and legibility.
+That’s ignoring the possibility of errors.</p>
 <p>The above situation is what we faced in work <a
 href="https://www.nature.com/articles/s41557-022-00956-7">combining
 high-throughput reaction data, chemical reaction networks and prebiotic
@@ -330,7 +336,7 @@ network structure and its components.</p>
 Python’s dictionary (<code>dict()</code>) data structure. If you’re not
 sure what a dictionary is, the basic idea is that one uses a key to
 access values stored in the dictionary. In the <code>Network</code>
-class,unique <code>Reaction</code> objects are stored in a dictionary
+class, unique <code>Reaction</code> objects are stored in a dictionary
 and are accessible using a key corresponding to the reaction SMILES
 derived from the reaction. <code>Compound</code> objects are stored in a
 similar way. Connections between reactions and compounds are made by
@@ -352,14 +358,14 @@ to compounds.</p>
 <h1 id="manipulating-network-structure">Manipulating Network
 Structure</h1>
 <p>The <code>Network</code> class has methods for adding and removing
-reactions
-(<code>network.add_reactions([Reaction, ...])</code>/<code>network/remove_reactions([Reaction, ...])</code>)
-and compounds
-(<code>network.add_compounds([Compoud, ...])</code>/<code>network.remove_compounds([Compound, ...])</code>).
-These methods make it easy to add or remove network components without
-having to manually clean up the underlying dictionaries to remove any
-‘loose end’ reactions without reactants or products, for example.
-Methods for removing single compounds or reactions are also available
+reactions (<code>network.add_reactions([Reaction, ...])</code>/
+<code>network/remove_reactions([Reaction, ...])</code>) and compounds
+(<code>network.add_compounds([Compoud, ...])</code>/
+<code>network.remove_compounds([Compound, ...])</code>). These methods
+make it easy to add or remove network components without having to
+manually clean up the underlying dictionaries to remove any ‘loose end’
+reactions without reactants or products, for example. Methods for
+removing single compounds or reactions are also available
 (e.g. <code>network.remove_compound(Compound)</code>).</p>
 <h1 id="network-generation">Network Generation</h1>
 <p>NorthNet contains a network generation module, which allows for
