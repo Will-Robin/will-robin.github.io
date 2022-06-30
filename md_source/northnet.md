@@ -4,7 +4,7 @@ title: NorthNet
 
 # Introduction
 
-[NorthNet](https://github.com/Will-Robin/NorthNet) is a Python package for handling information on chemical reaction networks (CRNs). It is designed to solve the problem of interacting with the architecture of CRNs, which can be as simple as building and editing CRNs at the level of reactions and compounds represented in a computer model. At its core is the `Network` CRN model structure which can be interacted with using code which is chemically meaningful. For example, methods such as:
+[NorthNet](https://github.com/Will-Robin/NorthNet) is a Python package for handling information on chemical reaction networks (CRNs). It is designed to solve the problem of interacting with the architecture of CRNs, which can be as simple as building and editing CRNs at the level of reactions and compounds represented in a computer model. At its core is the `Network` CRN model structure which can be interacted with using code which is chemically meaningful.
 
 If you have ever written down a large number of chemical reactions by hand, you may appreciate what a mechanical process the task is. Organic chemistry can be quite repetitive, in particular. A good example of such mechanical repetitiveness is the formose reaction. Start with a sugar, form its enol, aldol addition/protonate, repeat. You can build quite a large network of chemical reactions following these steps. However, you may realise at a later point that you'd like to introduce a new type of reaction. If you're modifying a scheme on paper, or even in a graphical user interface on a computer, adding in the new reactions can be ever harder that starting from scratch. It is necessary to find the right compounds for the reactions, find space on the page in which to add the new reactions, and what if two compounds for either side of the scheme have to react together? It is certainly possible to write a complex reaction network on paper, but at the costs of time and legibility. That's ignoring the possibility of errors.
 
@@ -47,7 +47,7 @@ Originally, I intended on implementing pathway search algorithms with use the `N
 
 # Conclusion
 
-That's the end, for now. I use NorthNet as a tool for keeping track of large sets of reactions, as a reference, and as a kind of 'database' as part of investigations. I hope it is useful for you!
+That's the end, for now. I use NorthNet as a tool for keeping track of large sets of reactions, as a reference, and as a kind of 'database' as part of investigations.
 
 
 ---
