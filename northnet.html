@@ -160,31 +160,15 @@
 
     --r-main-font: Georgia, Palatino Linotype, Book Antiqua, Palatino, FreeSerif, serif;
 
-    --r-main-font-size: 12px;
-
-    --r-main-color: #000000;
-    --r-block-margin: 20px;
-
-    --r-heading-margin: 0 0 50px 0;
     --r-heading-font: Palatino Linotype, Book Antiqua, Palatino, FreeSerif, serif;
     --r-heading-color: rgb(48, 65, 47);
-    --r-heading-line-height: 1.2;
-    --r-heading-letter-spacing: normal;
-    --r-heading-text-transform: none;
-    --r-heading-text-shadow: none;
-    --r-heading-font-weight: normal;
-    --r-heading1-text-shadow: none;
-    --r-heading1-size: 8em;
-    --r-heading2-size: 6em;
-    --r-heading3-size: 4em;
-    --r-heading4-size: 2em;
 
-    --r-base-font-size: 2em;
     --r-code-font: monospace;
 
     --r-link-color: #387C89;
     --r-link-color-dark: #25211c;
     --r-link-color-hover: #93734b;
+
     --r-selection-background-color: #304a1f;
     --r-selection-color: #fff;
   }
@@ -196,32 +180,33 @@
   }
 
   body {
-    margin: 0 auto;
-    height: 100%;
+    margin: auto;
     width: 100%;
+    height: 100%;
     text-align: justify;
     font-family: var(--r-main-font);
   }
 
-  title {
-    margin: 0 auto;
-    padding: 70px 0;
-    text-align: center;
-    color: var(--r-heading-color);
-    size: var(--r-heading1-size);
-  }
-
   header {
     background-image: url("images/Background_1.svg");
-    background-size: cover;
+    background-size: stretch;
     background-repeat: no-repeat;
-    width: 100%;
-    height: 10%;
-    padding: 60px 0;
-    text-align: center;
+    background-position: center top;
+    background-clip: border-box;
+
     border-style: transparent;
     border-width: 1px;
     border-radius: 15px;
+  }
+
+  #title-block-header {
+    padding: 0 0;
+    width:100%;
+    height: 17.5%;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
   }
 
   code {
@@ -229,8 +214,12 @@
   }
 
   h1 {
+    padding: 0 0;
     color: var(--r-heading-color);
     font-family: var(--r-heading-font);
+  }
+
+  header h1 {
   }
 
   h2 {
@@ -256,6 +245,39 @@
     text-decoration: underline;
   }
 
+  .nav-bar {
+    padding: 0 0;
+    margin: auto;
+  }
+
+  .nav-bar ul {
+    list-style-type: none;
+    padding: 0 0;
+    overflow: hidden;
+    background-color: #A4A791;
+  }
+
+  .nav-bar li {
+    float: left;
+  }
+
+  .nav-bar ul li a {
+    display: block;
+    color: #FBFBFA;
+    padding: 10px 15px;
+    text-decoration: none;
+    text-align: center;
+  }
+
+  .nav-bar li a:hover {
+    background-color: #6E6776;
+    color: white;
+  }
+
+  .active {
+    background-color: #A4A791;
+  }
+
   </style>
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
@@ -265,6 +287,12 @@
 <header id="title-block-header">
 <h1 class="title">NorthNet</h1>
 </header>
+<div class="nav-bar">
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="about.html">About</a></li>
+</ul>
+</div>
 <h1 id="introduction">Introduction</h1>
 <p><a href="https://github.com/Will-Robin/NorthNet">NorthNet</a> is a
 Python package for handling information on chemical reaction networks
@@ -358,8 +386,8 @@ to compounds.</p>
 Structure</h1>
 <p>The <code>Network</code> class has methods for adding and removing
 reactions (<code>network.add_reactions([Reaction, ...])</code>/
-<code>network/remove_reactions([Reaction, ...])</code>) and compounds
-(<code>network.add_compounds([Compoud, ...])</code>/
+<code>network.remove_reactions([Reaction, ...])</code>) and compounds
+(<code>network.add_compounds([Compound, ...])</code>/
 <code>network.remove_compounds([Compound, ...])</code>). These methods
 make it easy to add or remove network components without having to
 manually clean up the underlying dictionaries to remove any ‘loose end’
