@@ -2,6 +2,11 @@
 title: NorthNet
 ...
 
+:::nav-bar
+- [Home](index.html)
+- [About](about.html)
+:::
+
 # Introduction
 
 [NorthNet](https://github.com/Will-Robin/NorthNet) is a Python package for handling information on chemical reaction networks (CRNs). It is designed to solve the problem of interacting with the architecture of CRNs, which can be as simple as building and editing CRNs at the level of reactions and compounds represented in a computer model. At its core is the `Network` CRN model structure which can be interacted with using code which is chemically meaningful.
@@ -29,7 +34,7 @@ This 'bipartite' network structure has two kinds of nodes: `NetworkReactions` an
 
 # Manipulating Network Structure
 
-The `Network` class has methods for adding and removing reactions (`network.add_reactions([Reaction, ...])`/ `network/remove_reactions([Reaction, ...])`) and compounds (`network.add_compounds([Compoud, ...])`/ `network.remove_compounds([Compound, ...])`). These methods make it easy to add or remove network components without having to manually clean up the underlying dictionaries to remove any 'loose end' reactions without reactants or products, for example. Methods for removing single compounds or reactions are also available (e.g. `network.remove_compound(Compound)`).
+The `Network` class has methods for adding and removing reactions (`network.add_reactions([Reaction, ...])`/ `network.remove_reactions([Reaction, ...])`) and compounds (`network.add_compounds([Compound, ...])`/ `network.remove_compounds([Compound, ...])`). These methods make it easy to add or remove network components without having to manually clean up the underlying dictionaries to remove any 'loose end' reactions without reactants or products, for example. Methods for removing single compounds or reactions are also available (e.g. `network.remove_compound(Compound)`).
 
 # Network Generation
 
