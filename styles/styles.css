@@ -4,31 +4,15 @@
 
   --r-main-font: Georgia, Palatino Linotype, Book Antiqua, Palatino, FreeSerif, serif;
 
-  --r-main-font-size: 12px;
-
-  --r-main-color: #000000;
-  --r-block-margin: 20px;
-
-  --r-heading-margin: 0 0 50px 0;
   --r-heading-font: Palatino Linotype, Book Antiqua, Palatino, FreeSerif, serif;
   --r-heading-color: rgb(48, 65, 47);
-  --r-heading-line-height: 1.2;
-  --r-heading-letter-spacing: normal;
-  --r-heading-text-transform: none;
-  --r-heading-text-shadow: none;
-  --r-heading-font-weight: normal;
-  --r-heading1-text-shadow: none;
-  --r-heading1-size: 8em;
-  --r-heading2-size: 6em;
-  --r-heading3-size: 4em;
-  --r-heading4-size: 2em;
 
-  --r-base-font-size: 2em;
   --r-code-font: monospace;
 
   --r-link-color: #387C89;
   --r-link-color-dark: #25211c;
   --r-link-color-hover: #93734b;
+
   --r-selection-background-color: #304a1f;
   --r-selection-color: #fff;
 }
@@ -40,32 +24,33 @@ html {
 }
 
 body {
-  margin: 0 auto;
-  height: 100%;
+  margin: auto;
   width: 100%;
+  height: 100%;
   text-align: justify;
   font-family: var(--r-main-font);
 }
 
-title {
-  margin: 0 auto;
-  padding: 70px 0;
-  text-align: center;
-  color: var(--r-heading-color);
-  size: var(--r-heading1-size);
-}
-
 header {
   background-image: url("images/Background_1.svg");
-  background-size: cover;
+  background-size: stretch;
   background-repeat: no-repeat;
-  width: 100%;
-  height: 10%;
-  padding: 60px 0;
-  text-align: center;
+  background-position: center top;
+  background-clip: border-box;
+
   border-style: transparent;
   border-width: 1px;
   border-radius: 15px;
+}
+
+#title-block-header {
+  padding: 0 0;
+  width:100%;
+  height: 17.5%;
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
 }
 
 code {
@@ -73,8 +58,12 @@ code {
 }
 
 h1 {
+  padding: 0 0;
   color: var(--r-heading-color);
   font-family: var(--r-heading-font);
+}
+
+header h1 {
 }
 
 h2 {
@@ -98,6 +87,39 @@ a:hover {
   color: var(--r-link-color-hover);
   background-color: transparent;
   text-decoration: underline;
+}
+
+.nav-bar {
+  padding: 0 0;
+  margin: auto;
+}
+
+.nav-bar ul {
+  list-style-type: none;
+  padding: 0 0;
+  overflow: hidden;
+  background-color: #A4A791;
+}
+
+.nav-bar li {
+  float: left;
+}
+
+.nav-bar ul li a {
+  display: block;
+  color: #FBFBFA;
+  padding: 10px 15px;
+  text-decoration: none;
+  text-align: center;
+}
+
+.nav-bar li a:hover {
+  background-color: #6E6776;
+  color: white;
+}
+
+.active {
+  background-color: #A4A791;
 }
 
 </style>
