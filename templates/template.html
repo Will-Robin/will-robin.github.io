@@ -36,9 +36,13 @@ $include-before$
 $endfor$
 $if(title)$
 <header id="title-block-header">
+<div class="header-title">
 <h1 class="title">$title$</h1>
+</div>
 $if(subtitle)$
+<div class="header-subtitle">
 <p class="subtitle">$subtitle$</p>
+</div>
 $endif$
 $for(author)$
 <p class="author">$author$</p>
