@@ -1,10 +1,12 @@
-<style> /* Style tag here so this CSS can be integrated into the HTML header */
 :root {
   --r-background-color: #F0F1EB;
 
-  --r-main-font: Georgia, Palatino Linotype, Book Antiqua, Palatino, FreeSerif, serif;
+  --r-main-font: Georgia;
+  --r-main-font-size: 12pt;
 
-  --r-heading-font: Palatino Linotype, Book Antiqua, Palatino, FreeSerif, serif;
+  --r-heading-font: Garamond;
+  --r-heading-font-size: 18pt;
+
   --r-heading-color: rgb(48, 65, 47);
 
   --r-code-font: monospace;
@@ -15,6 +17,9 @@
 
   --r-selection-background-color: #304a1f;
   --r-selection-color: #fff;
+
+  --r-bar: #FBFBFA; 
+  --r-highlight: #6E6776;
 }
 
 html {
@@ -25,14 +30,16 @@ html {
 
 body {
   margin: auto;
-  width: 100%;
+  width: 90%;
   height: 100%;
   text-align: justify;
   font-family: var(--r-main-font);
+  background-color: var(--r-background-color);
 }
 
 header {
-  background-image: url("images/Background_1.svg");
+  /*Path relative to file directory.*/
+  background-image: url("../images/Background_1.svg");
   background-size: stretch;
   background-repeat: no-repeat;
   background-position: center top;
@@ -41,30 +48,25 @@ header {
   border-style: transparent;
   border-width: 1px;
   border-radius: 15px;
+  width: 100%;
 }
 
-#title-block-header {
-  padding: 0 0;
-  width:100%;
-  height: 17.5%;
-  display: flex;
-  margin: auto;
-  justify-content: center;
-  align-items: center;
+p {
+  font-size: var(--r-main-font-size);
 }
 
 code {
   font-family: var(--r-code-font);
+  font-size: var(--r-main-font-size);
 }
 
 h1 {
   padding: 0 0;
   color: var(--r-heading-color);
   font-family: var(--r-heading-font);
+  font-size: var(--r-heading-font-size);
 }
 
-header h1 {
-}
 
 h2 {
   color: var(--r-heading-color);
@@ -89,6 +91,20 @@ a:hover {
   text-decoration: underline;
 }
 
+#title-block-header {
+  padding: 0 0;
+  width:100%;
+  height: 17.5%;
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-size: 22pt;
+}
+
 .nav-bar {
   padding: 0 0;
   margin: auto;
@@ -107,14 +123,14 @@ a:hover {
 
 .nav-bar ul li a {
   display: block;
-  color: #FBFBFA;
+  color: var(--r-bar);
   padding: 10px 15px;
   text-decoration: none;
   text-align: center;
 }
 
 .nav-bar li a:hover {
-  background-color: #6E6776;
+  background-color: var(--r-highlight);
   color: white;
 }
 
@@ -122,4 +138,13 @@ a:hover {
   background-color: #A4A791;
 }
 
-</style>
+.panels {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.level2 {
+  padding: 10px;
+}
+
