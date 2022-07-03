@@ -5,6 +5,7 @@ title: Will Robinson
 :::nav-bar
 - [Home](index.html)
 - [About](about.html)
+- [Publications](publications.html)
 :::
 
 :::panels

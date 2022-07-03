@@ -5,6 +5,7 @@ title: about
 :::nav-bar
 - [Home](index.html)
 - [About](about.html)
+- [Publications](publications.html)
 :::
 
 GitHub is the current home of software I've developed to help me do my job as a scientist.

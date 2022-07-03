@@ -5,6 +5,7 @@ title: NorthNet
 :::nav-bar
 - [Home](index.html)
 - [About](about.html)
+- [Publications](publications.html)
 :::
 
 # Introduction
