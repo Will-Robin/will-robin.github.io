@@ -1,5 +1,5 @@
 ---
-title: about
+title: About
 ...
 
 :::nav-bar
@@ -23,6 +23,5 @@ On the other, in some cases it takes me as less time to write a program to solve
 By sharing this software, I hope it will be useful for other chemists and scientists in getting their work done and developing new ideas, even if it just serves as an example. As always, there is more than one way to clean an NMR tube.
 
 These pages were generated from markdown, css and svg [source files](https://github.com/Will-Robin/will-robin.github.io).
-
 
 ---

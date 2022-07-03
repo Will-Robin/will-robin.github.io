@@ -112,7 +112,6 @@ h1 {
   font-size: var(--r-heading-font-size);
 }
 
-
 h2 {
   color: var(--r-heading-color);
   font-family: var(--r-heading-font);
@@ -209,11 +208,12 @@ div.header-title {
 .panels {
   width: 100%;
   display: flex;
+  padding: 10px 0;
+  gap: 10px;
   justify-content: space-between;
   flex-wrap: wrap;
   flex-direction: row;
   align-items: flex-start;
-  gap: 10px;
 }
 
 .panels section {
@@ -274,7 +274,6 @@ div.header-title {
   background-clip: border-box;
 }
 
-
 #taggregate {
   background-image: url("../images/taggregate_thumbnail.svg");
   background-size: contain;
@@ -282,5 +281,4 @@ div.header-title {
   background-position: right bottom;
   background-clip: border-box;
 }
-
 
