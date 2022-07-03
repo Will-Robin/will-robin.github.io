@@ -7,10 +7,6 @@ title: Will Robinson
 - [About](about.html)
 :::
 
-::: description
-Below are descriptions of my repositories.
-:::
-
 :::panels
 
 ## NorthNet
