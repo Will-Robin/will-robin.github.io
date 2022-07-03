@@ -1,10 +1,51 @@
+@font-face {
+    font-family: atkinson hyperlegible;
+    font-style: normal;
+    font-weight: 400;
+    src: local(""), url(../fonts/Atkinson-Hyperlegible-Regular-102a.woff2) format("woff2") 
+}
+
+@font-face {
+    font-family: atkinson hyperlegible;
+    font-style: italic;
+    font-weight: 400;
+    src: local(""), url(../fonts/Atkinson-Hyperlegible-Italic-102a.woff2) format("woff2")
+}
+
+@font-face {
+    font-family: atkinson hyperlegible;
+    font-style: normal;
+    font-weight: 700;
+    src: local(""), url(../fonts/Atkinson-Hyperlegible-Bold-102a.woff2) format("woff2")
+}
+
+@font-face {
+    font-family: atkinson hyperlegible;
+    font-style: italic;
+    font-weight: 700;
+    src: local(""), url(../fonts/Atkinson-Hyperlegible-BoldItalic-102a.woff2) format("woff2")
+}
+
+@font-face {
+    font-family: atkinson hyperlegible;
+    font-style: italic;
+    font-weight: 700;
+    src: local(""), url(../fonts/Atkinson-Hyperlegible-BoldItalic-102a.woff2) format("woff2")
+}
+
+@font-face {
+    font-family: petrona;
+    font-weight: 400;
+    src: local(""), url(../fonts/Petrona-VariableFont_wght.woff2) format("woff2")
+}
+
 :root {
   --r-background-color: #F0F1EB;
 
-  --r-main-font: Georgia;
+  --r-main-font: Atkinson Hyperlegible;
   --r-main-font-size: 12pt;
 
-  --r-heading-font: Garamond;
+  --r-heading-font: Petrona;
   --r-heading-font-size: 18pt;
 
   --r-heading-color: rgb(48, 65, 47);
@@ -55,6 +96,7 @@ header {
 
 p {
   font-size: var(--r-main-font-size);
+  text-align: justify;
 }
 
 code {
@@ -92,6 +134,7 @@ a:hover {
   background-color: transparent;
   text-decoration: underline;
 }
+
 #title-block-header {
   padding: 0 0;
   width:100%;
@@ -139,12 +182,24 @@ a:hover {
   background-color: #A4A791;
 }
 
+.description p {
+  text-align: center;
+}
+
 .panels {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   align-items: flex-start;
   gap: 10px;
+}
+
+.panels section {
+  flex-grow: 3;
+}
+
+.panels h2 {
+  text-align: center;
 }
 
 .level2 {
