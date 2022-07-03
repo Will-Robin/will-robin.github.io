@@ -52,7 +52,7 @@
 
   --r-code-font: monospace;
 
-  --r-link-color: #387C89;
+  --r-link-color: #6E6776;
   --r-link-color-dark: #25211c;
   --r-link-color-hover: #93734b;
 
@@ -83,7 +83,7 @@ body {
 header {
   /*Path relative to file directory.*/
   background-image: url("../images/Background_1.svg");
-  background-size: stretch;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center top;
   background-clip: border-box;
@@ -116,6 +116,10 @@ h1 {
 h2 {
   color: var(--r-heading-color);
   font-family: var(--r-heading-font);
+}
+
+figure {
+  width: 100%;
 }
 
 a:link {
