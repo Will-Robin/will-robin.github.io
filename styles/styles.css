@@ -243,7 +243,7 @@ div.header-title {
 }
 
 #chromefish {
-  background-image: url("../images/chromatogram.svg");
+  background-image: url("../images/chromatogram_2.svg");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: right bottom;
@@ -273,3 +273,14 @@ div.header-title {
   background-position: right bottom;
   background-clip: border-box;
 }
+
+
+#taggregate {
+  background-image: url("../images/taggregate_thumbnail.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  background-clip: border-box;
+}
+
+
