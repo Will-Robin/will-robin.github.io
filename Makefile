@@ -3,7 +3,7 @@ TEMPLATE=--template=templates/template.html
 CSS=--css=styles/styles.css
 
 all: index.html northnet.html about.html chromefish.html chromprocess.html \
-	flowcalc.html moonuscript.html taggregate.html
+	flowcalc.html moonuscript.html taggregate.html publications.html
 
 index.html: md_source/index.md styles/styles.css
 	$(PANDOC_BASE) --section-divs md_source/index.md $(TEMPLATE) $(CSS) -s -o index.html
@@ -28,3 +28,6 @@ moonuscript.html: md_source/moonuscript.md styles/styles.css
 
 taggregate.html: md_source/taggregate.md styles/styles.css
 	$(PANDOC_BASE) md_source/taggregate.md $(TEMPLATE) $(CSS) -s -o taggregate.html
+
+publications.html: md_source/publications.md styles/styles.css
+	$(PANDOC_BASE) md_source/publications.md --citeproc --bibliography=publications/publications.bib --csl=publications/rsc.csl $(TEMPLATE) $(CSS) -o publications.html
