@@ -234,3 +234,42 @@ div.header-title {
   background-color: var(--r-bar);
 }
 
+#chromprocess {
+  background-image: url("../images/chromatogram.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  background-clip: border-box;
+}
+
+#chromefish {
+  background-image: url("../images/chromatogram.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  background-clip: border-box;
+}
+
+#northnet {
+  background-image: url("../images/network_thumbnail.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  background-clip: border-box;
+}
+
+#flowcalc {
+  background-image: url("../images/signal_thumbnail.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  background-clip: border-box;
+}
+
+#moonuscript {
+  background-image: url("../images/moonuscript_thumbnail.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  background-clip: border-box;
+}

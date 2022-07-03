@@ -6,170 +6,186 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>NorthNet</title>
   <link rel="stylesheet" href="styles/styles.css" />
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
 </head>
 <body>
-<header id="title-block-header">
-<div class="header-title">
-<h1 class="title">NorthNet</h1>
-</div>
-</header>
-<div class="nav-bar">
-<ul>
-<li><a href="index.html">Home</a></li>
-<li><a href="about.html">About</a></li>
-</ul>
-</div>
-<h1 id="introduction">Introduction</h1>
-<p><a href="https://github.com/Will-Robin/NorthNet">NorthNet</a> is a
-Python package for handling information on chemical reaction networks
-(CRNs). It is designed to solve the problem of interacting with the
-architecture of CRNs, which can be as simple as building and editing
-CRNs at the level of reactions and compounds represented in a computer
-model. At its core is the <code>Network</code> CRN model structure which
-can be interacted with using code which is chemically meaningful.</p>
-<p>If you have ever written down a large number of chemical reactions by
-hand, you may appreciate what a mechanical process the task is. Organic
-chemistry can be quite repetitive, in particular. A good example of such
-mechanical repetitiveness is the formose reaction. Start with a sugar,
-form its enol, aldol addition/protonate, repeat. You can build quite a
-large network of chemical reactions following these steps. However, you
-may realise at a later point that you’d like to introduce a new type of
-reaction. If you’re modifying a scheme on paper, or even in a graphical
-user interface on a computer, adding in the new reactions can be ever
-harder that starting from scratch. It is necessary to find the right
-compounds for the reactions, find space on the page in which to add the
-new reactions, and what if two compounds for either side of the scheme
-have to react together? It is certainly possible to write a complex
-reaction network on paper, but at the costs of time and legibility.
-That’s ignoring the possibility of errors.</p>
-<p>The above situation is what we faced in work <a
-href="https://www.nature.com/articles/s41557-022-00956-7">combining
-high-throughput reaction data, chemical reaction networks and prebiotic
-chemistry</a> (<a href="https://rdcu.be/cO4qW">public read access
-here</a>). There was a lot to keep track of for this paper, including a
-potentially large number of reaction pathways available within the
-formose reaction space. The code which became NorthNet allowed us to
-manage this complex part of the project, as well as giving us an ‘in
-silico’ model of the formose reaction.</p>
-<p>I’m intending to use NorthNet (or similar software) in future work.
-It is open source since I believe that’s the right thing to do (without
-going into details). It is a good thing to make code available, but
-that’s not enough. For others to benefit, code also needs to be
-documented, explained and demonstrated. Not to mention tested,
-maintained and distributed. A lot of work.</p>
-<p>The API documentation for NorthNet is available <a
-href="https://will-robin.github.io/NorthNet/NorthNet.html">here</a>.
-This is where you can go to get an outline of the NorthNet code. The
-code itself ideally should show the reader how it works. The <a
-href="https://github.com/Will-Robin/NorthNet/tree/main/scripts">scripts</a>
-folder in the repository gives some examples of how to use the code.</p>
-<p>Here, some general informal explanation is provided.</p>
-<h1 id="managing-interconnected-chemical-reaction-information">Managing
-Interconnected Chemical Reaction Information</h1>
-<p>If you take a look in <code>NorthNet.Classes</code>, you’ll see
-several files containing code referring to chemical concepts. For
-example, there is the <code>Reaction</code> class which represents
-reactions and the <code>Compound</code> class, which represents
-compounds (reactants and products). This code uses the excellent package
-<a href="https://www.rdkit.org">The RDKit</a> for the chemoinformatics
-heavy lifting behind the scenes. We’ll get to the others later, but the
-third relevant class here is <code>Network</code>. This class links
-together compounds and reactions into a chemical reaction network data
-structure.</p>
-<p>The mental model behind the <code>Network</code> class is that
-compounds are connected to each other by reactions. For example, a
-reaction connects <code>A</code> to <code>B</code> in the reaction:</p>
-<pre><code>A → B</code></pre>
-<p>…which can be stated as:</p>
-<pre><code>A → reaction → B</code></pre>
-<p>Note the arrows which show how <code>A</code> is a reactant and
-<code>B</code> is a product. Apply this logic to lots of other reactions
-which connect to this one via reactants/products, and you have a model
-for the structure of a reaction network structure and its
-components.</p>
-<p>The connections between compounds and reactions are realised using
-Python’s dictionary (<code>dict()</code>) data structure. If you’re not
-sure what a dictionary is, the basic idea is that one uses a key to
-access values stored in the dictionary. In the <code>Network</code>
-class, unique <code>Reaction</code> objects are stored in a dictionary
-and are accessible using a key corresponding to the reaction SMILES
-derived from the reaction. <code>Compound</code> objects are stored in a
-similar way. Connections between reactions and compounds are made by
-sharing keys between them. Each <code>Reaction</code> object has
-<code>Reactants</code> and <code>Products</code> attributes, which are
-lists of SMILES keys to compounds. Each compound has <code>In</code> and
-<code>Out</code> attributes, which store reaction SMILES keys, keying to
-reactions. Therefore, given any compound, one can immediately find all
-the reactions in which it is a reactant (by examining the
-<code>Out</code> attribute) or product (<code>In</code>), and the other
-way around for a reaction (given in <code>Reactants</code> and
-<code>Products</code> attributes). For this to work, it is important
-that each reaction and compound has a unique identifier. NorthNet uses
-canonicalised SMILES strings to achieve this standardisation.</p>
-<p>This ‘bipartite’ network structure has two kinds of nodes:
-<code>NetworkReactions</code> and <code>NetworkCompounds</code>.
-Compounds can only connect to reactions, and reactions can only connect
-to compounds.</p>
-<h1 id="manipulating-network-structure">Manipulating Network
-Structure</h1>
-<p>The <code>Network</code> class has methods for adding and removing
-reactions:</p>
-<div class="sourceCode" id="cb3"><pre
-class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>network.add_reactions([Reaction, ...])</span>
+    
+        <header id="title-block-header">
+        <div class="header-title">
+            <h1 class="title">NorthNet</h1>
+        </div>
+                            </header>
+    
+        <div class="nav-bar">
+        <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        </ul>
+        </div>
+        <h1 id="introduction">Introduction</h1>
+        <p><a href="https://github.com/Will-Robin/NorthNet">NorthNet</a>
+        is a Python package for handling information on chemical
+        reaction networks (CRNs). It is designed to solve the problem of
+        interacting with the architecture of CRNs, which can be as
+        simple as building and editing CRNs at the level of reactions
+        and compounds represented in a computer model. At its core is
+        the <code>Network</code> CRN model structure which can be
+        interacted with using code which is chemically meaningful.</p>
+        <p>If you have ever written down a large number of chemical
+        reactions by hand, you may appreciate what a mechanical process
+        the task is. Organic chemistry can be quite repetitive, in
+        particular. A good example of such mechanical repetitiveness is
+        the formose reaction. Start with a sugar, form its enol, aldol
+        addition/protonate, repeat. You can build quite a large network
+        of chemical reactions following these steps. However, you may
+        realise at a later point that you’d like to introduce a new type
+        of reaction. If you’re modifying a scheme on paper, or even in a
+        graphical user interface on a computer, adding in the new
+        reactions can be ever harder that starting from scratch. It is
+        necessary to find the right compounds for the reactions, find
+        space on the page in which to add the new reactions, and what if
+        two compounds for either side of the scheme have to react
+        together? It is certainly possible to write a complex reaction
+        network on paper, but at the costs of time and legibility.
+        That’s ignoring the possibility of errors.</p>
+        <p>The above situation is what we faced in work <a
+        href="https://www.nature.com/articles/s41557-022-00956-7">combining
+        high-throughput reaction data, chemical reaction networks and
+        prebiotic chemistry</a> (<a href="https://rdcu.be/cO4qW">public
+        read access here</a>). There was a lot to keep track of for this
+        paper, including a potentially large number of reaction pathways
+        available within the formose reaction space. The code which
+        became NorthNet allowed us to manage this complex part of the
+        project, as well as giving us an ‘in silico’ model of the
+        formose reaction.</p>
+        <p>I’m intending to use NorthNet (or similar software) in future
+        work. It is open source since I believe that’s the right thing
+        to do (without going into details). It is a good thing to make
+        code available, but that’s not enough. For others to benefit,
+        code also needs to be documented, explained and demonstrated.
+        Not to mention tested, maintained and distributed. A lot of
+        work.</p>
+        <p>The API documentation for NorthNet is available <a
+        href="https://will-robin.github.io/NorthNet/NorthNet.html">here</a>.
+        This is where you can go to get an outline of the NorthNet code.
+        The code itself ideally should show the reader how it works. The
+        <a
+        href="https://github.com/Will-Robin/NorthNet/tree/main/scripts">scripts</a>
+        folder in the repository gives some examples of how to use the
+        code.</p>
+        <p>Here, some general informal explanation is provided.</p>
+        <h1
+        id="managing-interconnected-chemical-reaction-information">Managing
+        Interconnected Chemical Reaction Information</h1>
+        <p>If you take a look in <code>NorthNet.Classes</code>, you’ll
+        see several files containing code referring to chemical
+        concepts. For example, there is the <code>Reaction</code> class
+        which represents reactions and the <code>Compound</code> class,
+        which represents compounds (reactants and products). This code
+        uses the excellent package <a href="https://www.rdkit.org">The
+        RDKit</a> for the chemoinformatics heavy lifting behind the
+        scenes. We’ll get to the others later, but the third relevant
+        class here is <code>Network</code>. This class links together
+        compounds and reactions into a chemical reaction network data
+        structure.</p>
+        <p>The mental model behind the <code>Network</code> class is
+        that compounds are connected to each other by reactions. For
+        example, a reaction connects <code>A</code> to <code>B</code> in
+        the reaction:</p>
+        <pre><code>A → B</code></pre>
+        <p>…which can be stated as:</p>
+        <pre><code>A → reaction → B</code></pre>
+        <p>Note the arrows which show how <code>A</code> is a reactant
+        and <code>B</code> is a product. Apply this logic to lots of
+        other reactions which connect to this one via
+        reactants/products, and you have a model for the structure of a
+        reaction network structure and its components.</p>
+        <p>The connections between compounds and reactions are realised
+        using Python’s dictionary (<code>dict()</code>) data structure.
+        If you’re not sure what a dictionary is, the basic idea is that
+        one uses a key to access values stored in the dictionary. In the
+        <code>Network</code> class, unique <code>Reaction</code> objects
+        are stored in a dictionary and are accessible using a key
+        corresponding to the reaction SMILES derived from the reaction.
+        <code>Compound</code> objects are stored in a similar way.
+        Connections between reactions and compounds are made by sharing
+        keys between them. Each <code>Reaction</code> object has
+        <code>Reactants</code> and <code>Products</code> attributes,
+        which are lists of SMILES keys to compounds. Each compound has
+        <code>In</code> and <code>Out</code> attributes, which store
+        reaction SMILES keys, keying to reactions. Therefore, given any
+        compound, one can immediately find all the reactions in which it
+        is a reactant (by examining the <code>Out</code> attribute) or
+        product (<code>In</code>), and the other way around for a
+        reaction (given in <code>Reactants</code> and
+        <code>Products</code> attributes). For this to work, it is
+        important that each reaction and compound has a unique
+        identifier. NorthNet uses canonicalised SMILES strings to
+        achieve this standardisation.</p>
+        <p>This ‘bipartite’ network structure has two kinds of nodes:
+        <code>NetworkReactions</code> and <code>NetworkCompounds</code>.
+        Compounds can only connect to reactions, and reactions can only
+        connect to compounds.</p>
+        <h1 id="manipulating-network-structure">Manipulating Network
+        Structure</h1>
+        <p>The <code>Network</code> class has methods for adding and
+        removing reactions:</p>
+        <div class="sourceCode" id="cb3"><pre
+        class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>network.add_reactions([Reaction, ...])</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>network.remove_reactions([Reaction, ...])</span></code></pre></div>
-<p>…and compounds:</p>
-<div class="sourceCode" id="cb4"><pre
-class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>network.add_compounds([Compound, ...])</span>
+        <p>…and compounds:</p>
+        <div class="sourceCode" id="cb4"><pre
+        class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>network.add_compounds([Compound, ...])</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>network.remove_compounds([Compound, ...])</span></code></pre></div>
-<p>These methods make it easy to add or remove network components
-without having to manually clean up the underlying dictionaries to
-remove any ‘loose end’ reactions without reactants or products, for
-example. Methods for removing single compounds or reactions are also
-available (e.g. <code>network.remove_compound(Compound)</code>).</p>
-<h1 id="network-generation">Network Generation</h1>
-<p>NorthNet contains a network generation module, which allows for
-rule-based chemical reaction generation within the organisation of the
-<code>Network</code> class. Again, the core of this operation is code
-from The RDKit, but NorthNet marshals the reaction generation operations
-to perform them and store their results in a well defined manner.</p>
-<p>Network generation uses the <code>ReactionTemplate</code> and
-<code>Substructure</code> classes (in addition to <code>Compound</code>,
-<code>Reaction</code> and <code>Network</code>).
-<code>ReactionTemplate</code> wraps up <a
-href="https://www.rdkit.org/docs/RDKit_Book.html#chemical-reaction-handling">reaction
-SMARTS</a>, whilst <code>Substructure</code> wraps up <a
-href="https://www.daylight.com/dayhtml/doc/theory/theory.smarts.html">SMARTS</a>.</p>
-<p>Designing (reaction) SMARTS patterns is beyond the scope of this
-document. Examples can be found in the <a
-href="https://github.com/Will-Robin/NorthNet/tree/main/scripts">scripts</a>
-directory of the repo.</p>
-<p>A network generation operation consists of finding compounds in the
-network which have substructure matches with the substructures defined
-in the <code>ReactiveSubstructures</code> attribute of a
-<code>ReactionTemplate</code> object. Reaction transformations are then
-performed on the selected compounds, and new reactions and compounds are
-added to the network. This process can be repeated with the same
-reaction type or other reaction types to build large network
-structures.</p>
-<h1 id="pathway-searching">Pathway searching</h1>
-<p>Originally, I intended on implementing pathway search algorithms with
-use the <code>Network</code> data structure. I did some work to that
-end, but realised that it would be more sensible to use <a
-href="https://networkx.org">NetworkX</a> for pathway searching. This
-interface is enabled using the <code>network.to_networkx()</code> method
-to create a NetworkX DiGraph object with the same structure as the
-NorthNet <code>Network</code>. Why not just start from NetworkX in the
-first place? NorthNet provides a chemically meaningful interface to
-network creation and manipulation. Similar operations could be performed
-with a NetworkX DiGraph, but at the expense of clarity over the
-insertion and removal of chemical information.</p>
-<h1 id="conclusion">Conclusion</h1>
-<p>That’s the end, for now. I use NorthNet as a tool for keeping track
-of large sets of reactions, as a reference, and as a kind of ‘database’
-as part of investigations.</p>
-<hr />
-</body>
+        <p>These methods make it easy to add or remove network
+        components without having to manually clean up the underlying
+        dictionaries to remove any ‘loose end’ reactions without
+        reactants or products, for example. Methods for removing single
+        compounds or reactions are also available
+        (e.g. <code>network.remove_compound(Compound)</code>).</p>
+        <h1 id="network-generation">Network Generation</h1>
+        <p>NorthNet contains a network generation module, which allows
+        for rule-based chemical reaction generation within the
+        organisation of the <code>Network</code> class. Again, the core
+        of this operation is code from The RDKit, but NorthNet marshals
+        the reaction generation operations to perform them and store
+        their results in a well defined manner.</p>
+        <p>Network generation uses the <code>ReactionTemplate</code> and
+        <code>Substructure</code> classes (in addition to
+        <code>Compound</code>, <code>Reaction</code> and
+        <code>Network</code>). <code>ReactionTemplate</code> wraps up <a
+        href="https://www.rdkit.org/docs/RDKit_Book.html#chemical-reaction-handling">reaction
+        SMARTS</a>, whilst <code>Substructure</code> wraps up <a
+        href="https://www.daylight.com/dayhtml/doc/theory/theory.smarts.html">SMARTS</a>.</p>
+        <p>Designing (reaction) SMARTS patterns is beyond the scope of
+        this document. Examples can be found in the <a
+        href="https://github.com/Will-Robin/NorthNet/tree/main/scripts">scripts</a>
+        directory of the repo.</p>
+        <p>A network generation operation consists of finding compounds
+        in the network which have substructure matches with the
+        substructures defined in the <code>ReactiveSubstructures</code>
+        attribute of a <code>ReactionTemplate</code> object. Reaction
+        transformations are then performed on the selected compounds,
+        and new reactions and compounds are added to the network. This
+        process can be repeated with the same reaction type or other
+        reaction types to build large network structures.</p>
+        <h1 id="pathway-searching">Pathway searching</h1>
+        <p>Originally, I intended on implementing pathway search
+        algorithms with use the <code>Network</code> data structure. I
+        did some work to that end, but realised that it would be more
+        sensible to use <a href="https://networkx.org">NetworkX</a> for
+        pathway searching. This interface is enabled using the
+        <code>network.to_networkx()</code> method to create a NetworkX
+        DiGraph object with the same structure as the NorthNet
+        <code>Network</code>. Why not just start from NetworkX in the
+        first place? NorthNet provides a chemically meaningful interface
+        to network creation and manipulation. Similar operations could
+        be performed with a NetworkX DiGraph, but at the expense of
+        clarity over the insertion and removal of chemical
+        information.</p>
+        <h1 id="conclusion">Conclusion</h1>
+        <p>That’s the end, for now. I use NorthNet as a tool for keeping
+        track of large sets of reactions, as a reference, and as a kind
+        of ‘database’ as part of investigations.</p>
+        <hr />
+    </body>
 </html>
