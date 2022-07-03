@@ -81,13 +81,15 @@ together compounds and reactions into a chemical reaction network data
 structure.</p>
 <p>The mental model behind the <code>Network</code> class is that
 compounds are connected to each other by reactions. For example, a
-reaction connects <code>A</code> to <code>B</code> in the reaction
-<code>A → B</code>, which as a result can be stated as
-<code>A → reaction → B</code>. Note the arrows which show how
-<code>A</code> is a reactant and <code>B</code> is a product. Apply this
-logic to lots of other reactions which connect to this one via
-reactants/products, and you have a model for the structure of a reaction
-network structure and its components.</p>
+reaction connects <code>A</code> to <code>B</code> in the reaction:</p>
+<pre><code>A → B</code></pre>
+<p>…which can be stated as:</p>
+<pre><code>A → reaction → B</code></pre>
+<p>Note the arrows which show how <code>A</code> is a reactant and
+<code>B</code> is a product. Apply this logic to lots of other reactions
+which connect to this one via reactants/products, and you have a model
+for the structure of a reaction network structure and its
+components.</p>
 <p>The connections between compounds and reactions are realised using
 Python’s dictionary (<code>dict()</code>) data structure. If you’re not
 sure what a dictionary is, the basic idea is that one uses a key to
@@ -114,15 +116,19 @@ to compounds.</p>
 <h1 id="manipulating-network-structure">Manipulating Network
 Structure</h1>
 <p>The <code>Network</code> class has methods for adding and removing
-reactions (<code>network.add_reactions([Reaction, ...])</code>/
-<code>network.remove_reactions([Reaction, ...])</code>) and compounds
-(<code>network.add_compounds([Compound, ...])</code>/
-<code>network.remove_compounds([Compound, ...])</code>). These methods
-make it easy to add or remove network components without having to
-manually clean up the underlying dictionaries to remove any ‘loose end’
-reactions without reactants or products, for example. Methods for
-removing single compounds or reactions are also available
-(e.g. <code>network.remove_compound(Compound)</code>).</p>
+reactions:</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>network.add_reactions([Reaction, ...])</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>network.remove_reactions([Reaction, ...])</span></code></pre></div>
+<p>…and compounds:</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>network.add_compounds([Compound, ...])</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>network.remove_compounds([Compound, ...])</span></code></pre></div>
+<p>These methods make it easy to add or remove network components
+without having to manually clean up the underlying dictionaries to
+remove any ‘loose end’ reactions without reactants or products, for
+example. Methods for removing single compounds or reactions are also
+available (e.g. <code>network.remove_compound(Compound)</code>).</p>
 <h1 id="network-generation">Network Generation</h1>
 <p>NorthNet contains a network generation module, which allows for
 rule-based chemical reaction generation within the organisation of the

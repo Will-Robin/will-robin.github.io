@@ -26,7 +26,19 @@ Here, some general informal explanation is provided.
 
 If you take a look in `NorthNet.Classes`, you'll see several files containing code referring to chemical concepts. For example, there is the `Reaction` class which represents reactions and the `Compound` class, which represents compounds (reactants and products). This code uses the excellent package [The RDKit](https://www.rdkit.org) for the chemoinformatics heavy lifting behind the scenes. We'll get to the others later, but the third relevant class here is `Network`. This class links together compounds and reactions into a chemical reaction network data structure.
 
-The mental model behind the `Network` class is that compounds are connected to each other by reactions. For example, a reaction connects `A` to `B` in the reaction `A → B`, which as a result can be stated as `A → reaction → B`. Note the arrows which show how `A` is a reactant and `B` is a product. Apply this logic to lots of other reactions which connect to this one via reactants/products, and you have a model for the structure of a reaction network structure and its components.
+The mental model behind the `Network` class is that compounds are connected to each other by reactions. For example, a reaction connects `A` to `B` in the reaction:
+
+```
+A → B
+```
+
+...which can be stated as:
+
+```
+A → reaction → B
+```
+
+Note the arrows which show how `A` is a reactant and `B` is a product. Apply this logic to lots of other reactions which connect to this one via reactants/products, and you have a model for the structure of a reaction network structure and its components.
 
 The connections between compounds and reactions are realised using Python's dictionary (`dict()`) data structure. If you're not sure what a dictionary is, the basic idea is that one uses a key to access values stored in the dictionary. In the `Network` class, unique `Reaction` objects are stored in a dictionary and are accessible using a key corresponding to the reaction SMILES derived from the reaction. `Compound` objects are stored in a similar way. Connections between reactions and compounds are made by sharing keys between them. Each `Reaction` object has `Reactants` and `Products` attributes, which are lists of SMILES keys to compounds. Each compound has `In` and `Out` attributes, which store reaction SMILES keys, keying to reactions. Therefore, given any compound, one can immediately find all the reactions in which it is a reactant (by examining the `Out` attribute) or product (`In`), and the other way around for a reaction (given in `Reactants` and `Products` attributes). For this to work, it is important that each reaction and compound has a unique identifier. NorthNet uses canonicalised SMILES strings to achieve this standardisation.
 
@@ -34,7 +46,21 @@ This 'bipartite' network structure has two kinds of nodes: `NetworkReactions` an
 
 # Manipulating Network Structure
 
-The `Network` class has methods for adding and removing reactions (`network.add_reactions([Reaction, ...])`/ `network.remove_reactions([Reaction, ...])`) and compounds (`network.add_compounds([Compound, ...])`/ `network.remove_compounds([Compound, ...])`). These methods make it easy to add or remove network components without having to manually clean up the underlying dictionaries to remove any 'loose end' reactions without reactants or products, for example. Methods for removing single compounds or reactions are also available (e.g. `network.remove_compound(Compound)`).
+The `Network` class has methods for adding and removing reactions:
+
+```python
+network.add_reactions([Reaction, ...])
+network.remove_reactions([Reaction, ...])
+```
+
+...and compounds:
+
+```python
+network.add_compounds([Compound, ...])
+network.remove_compounds([Compound, ...])
+```
+
+These methods make it easy to add or remove network components without having to manually clean up the underlying dictionaries to remove any 'loose end' reactions without reactants or products, for example. Methods for removing single compounds or reactions are also available (e.g. `network.remove_compound(Compound)`).
 
 # Network Generation
 
