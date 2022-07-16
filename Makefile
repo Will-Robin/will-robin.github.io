@@ -30,4 +30,4 @@ taggregate.html: md_source/taggregate.md styles/styles.css
 	$(PANDOC_BASE) md_source/taggregate.md $(TEMPLATE) $(CSS) -s -o taggregate.html
 
 publications.html: md_source/publications.md styles/styles.css
-	$(PANDOC_BASE) md_source/publications.md --citeproc --bibliography=publications/publications.bib --csl=publications/rsc.csl $(TEMPLATE) $(CSS) -o publications.html
+	$(PANDOC_BASE) md_source/publications.md $(TEMPLATE) $(CSS) -o publications.html

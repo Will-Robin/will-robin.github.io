@@ -91,7 +91,7 @@ header {
   width: 100%;
   margin: auto;
 
-  border-style: transparent;
+  border-style: none;
   border-width: 1px;
   border-radius: 15px;
 }
@@ -104,6 +104,10 @@ p {
 code {
   font-family: var(--r-code-font);
   font-size: var(--r-main-font-size);
+}
+
+div.sourceCode {
+  margin: auto;
 }
 
 h1 {
@@ -164,32 +168,36 @@ div.header-title {
   width: 100%;
   position: relative;
   margin: auto;
+  justify-content: left;
+  
+  background-color: #A4A791;
+  border-width: 1px;
+  border-radius: var(--r-border-radius-1);
 }
 
 .nav-bar ul {
   display: flex;
   justify-content: center;
   align-items: center;
-  list-style-type: none;
   margin: auto;
   overflow: hidden;
-  background-color: #A4A791;
-
-  border-style: transparent;
-  border-width: 1px;
-  border-radius: var(--r-border-radius-1);
+  width: 30%;
+  
+  list-style-type: none;
+  border-style: none; 
 }
 
 .nav-bar li {
-  float: center;
   display: inline-block;
+  margin: 10px auto;
 }
 
 .nav-bar ul li a {
   color: var(--r-bar);
-  padding: 0 20px;
+  padding: 10px 20px;
   text-decoration: none;
   text-align: center;
+  border-radius: 5px;
 }
 
 .nav-bar li a:hover {
@@ -227,7 +235,7 @@ div.header-title {
 .level2 {
   padding: 0px 10px;
 
-  border-style: transparent;
+  border-style: none;
   border-width: 1px;
   border-radius: var(--r-border-radius-1);
 
