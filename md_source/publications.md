@@ -8,7 +8,7 @@ title: Publications
 - [Publications](publications.html)
 :::
 
-# Prebiotic Chemistry, Systems Chemistry
+# Prebiotic Chemistry, Chemical Reaction Networks
 
 ["Environmental conditions drive self-organization of reaction pathways in a prebiotic reaction network"](https://doi.org/10.1038%2Fs41557-022-00956-7), W. E. Robinson, E. Daines, P. van Duppen, T. de Jong and W. T. S. Huck, *Nature Chemistry*, 2022, **14**, 623–631 (DOI: 10.1038/s41557-022-00956-7)
 
